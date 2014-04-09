@@ -114,10 +114,10 @@ super + shift + space
   gmrun
 
 super + ctrl + minus
-  amixer set Master 5-
+  amixer set PCM 5-
 
 super + ctrl + equal
-  amixer set Master 5+
+  amixer set PCM 5+
 
 super + ctrl + {z,x,c}
   mpc -q {toggle,prev,next}
