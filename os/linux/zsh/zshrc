@@ -1,2 +1,9 @@
 # Ubuntu alias
 alias ~='urxvtc'
+
+# dircolors
+if [[ -f $XDG_CONFIG_HOME/dircolors ]]; then
+        eval $(dircolors -b $XDG_CONFIG_HOME/dircolors)
+else
+        eval $(dircolors)
+fi
