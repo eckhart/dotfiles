@@ -25,9 +25,11 @@ TERM xterm-termite
 TERM xterm-color
 TERM xterm-debian
 TERM rxvt
+TERM rxvt-unicode
 TERM rxvt-unicode-256color
 TERM screen
 TERM screen-w
+TERM screen-256color
 
 
 # Below are the color init strings for the basic file types. A color init
