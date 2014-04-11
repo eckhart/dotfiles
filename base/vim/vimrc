@@ -52,6 +52,7 @@ if has("unix")
   Bundle 'https://github.com/Shougo/neocomplete.vim'
   Bundle 'https://github.com/Shougo/neosnippet.vim'
   Bundle 'https://github.com/Shougo/neosnippet-snippets'
+  Bundle 'https://github.com/adonis0147/prettyGuides'
 
   filetype plugin indent on
 
@@ -100,83 +101,86 @@ if has("unix")
     hi SpellCap ctermfg=0 ctermbg=1
 
   "}
-    
-    map <leader>n :NERDTreeToggle<CR>
-    
-    " map for syntastic errors window
-    nnoremap <LEADER>e :Errors<CR>
-    
-    " autoclose syntastic's error windown when no errors
-    let g:syntastic_auto_loc_list=2
-    
-    " syntastic checking mode
-    let g:syntastic_mode_map = { 'mode': 'active',                              
-          \ 'active_filetypes': ['ruby', 'python', 'perl', 'shell', 'puppet' ],           
-          \ 'passive_filetypes': ['php', 'html'] }
-    
-    " check syntax on file open
-    let g:syntastic_check_on_open=1
-    
-    " enable puppet module detection
-    let g:puppet_module_detect=1
-    
-    " miniBufExpl
-    let g:miniBufExplMapWindowNavVim = 1 
-    let g:miniBufExplMapWindowNavArrows = 1 
-    let g:miniBufExplMapCTabSwitchBufs = 0 
-    let g:miniBufExplModSelTarget = 1 
+  
+  map <leader>n :NERDTreeToggle<CR>
+  
+  " map for syntastic errors window
+  nnoremap <LEADER>e :Errors<CR>
+  
+  " autoclose syntastic's error windown when no errors
+  let g:syntastic_auto_loc_list=2
+  
+  " syntastic checking mode
+  let g:syntastic_mode_map = { 'mode': 'active',                              
+        \ 'active_filetypes': ['ruby', 'python', 'perl', 'shell', 'puppet' ],           
+        \ 'passive_filetypes': ['php', 'html'] }
+  
+  " check syntax on file open
+  let g:syntastic_check_on_open=1
+  
+  " enable puppet module detection
+  let g:puppet_module_detect=1
+  
+  " miniBufExpl
+  let g:miniBufExplMapWindowNavVim = 1 
+  let g:miniBufExplMapWindowNavArrows = 1 
+  let g:miniBufExplMapCTabSwitchBufs = 0 
+  let g:miniBufExplModSelTarget = 1 
 
-    " Since I can't get C-Tab to work for switching buffer...
-    map <LEADER>l :bn<CR>
-    map <LEADER>h :bp<CR>
-   
-    " neocomplete 
-    let g:acp_enableAtStartup = 0
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#enable_camel_case = 1
-    let g:neocomplete#enable_underbar_case = 1
-    let g:neocomplete#enable_auto_delimiter = 1
-    let g:neocomplete#max_list = 15
-    let g:neocomplete#force_overwrite_completefunc = 1
+  " Since I can't get C-Tab to work for switching buffer...
+  map <LEADER>l :bn<CR>
+  map <LEADER>h :bp<CR>
+  
+  " neocomplete 
+  let g:acp_enableAtStartup = 0
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_camel_case = 1
+  let g:neocomplete#enable_underbar_case = 1
+  let g:neocomplete#enable_auto_delimiter = 1
+  let g:neocomplete#max_list = 15
+  let g:neocomplete#force_overwrite_completefunc = 1
 
-    " Define keyword.
-    if !exists('g:neocomplete#keyword_patterns')
-      let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+  " Define keyword.
+  if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-    " <TAB>: completion.
-    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+  " <TAB>: completion.
+  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-    " Enable omni completion.
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+  " Enable omni completion.
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-    " Enable heavy omni completion.
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-     let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    if !exists('g:neocomplete#force_omni_input_patterns')
-     let g:neocomplete#force_omni_input_patterns = {}
-    endif
+  " Enable heavy omni completion.
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+   let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+  if !exists('g:neocomplete#force_omni_input_patterns')
+   let g:neocomplete#force_omni_input_patterns = {}
+  endif
 
-    " neocomplete end
-    
-    " neosnippet
-    " Plugin key-mappings.
-    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    
-    " For snippet_complete marker.
-    if has('conceal')
-      set conceallevel=2 concealcursor=i
-    endif
+  " neocomplete end
+  
+  " neosnippet
+  " Plugin key-mappings.
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  
+  " For snippet_complete marker.
+  if has('conceal')
+    set conceallevel=2 concealcursor=i
+  endif
+
+  " prettyguides
+  let g:PrettyGuidesChar = '│'
 
   endif
 endif 
