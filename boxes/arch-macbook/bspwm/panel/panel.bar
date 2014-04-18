@@ -1,0 +1,1 @@
+cat "$PANEL_FIFO" | $XDG_CONFIG_HOME/bspwm/panel/panel_bar | bar -g x18 -B '#ff181512' -F '#ffbea492' -f '-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1,-misc-termsynu-medium-r-normal--11-79-100-100-c-60-iso10646-1'

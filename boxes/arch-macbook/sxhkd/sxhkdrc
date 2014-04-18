@@ -1,0 +1,20 @@
+XF86MonBrightnessUp
+  $HOME/bin/mon-brightness up
+
+XF86MonBrightnessDown
+  $HOME/bin/mon-brightness down
+
+XF86KbdBrightnessDown
+  $HOME/bin/kbd-brightness down
+
+XF86KbdBrightnessDown
+  $HOME/bin/kbd-brightness down
+
+XF86AudioRaiseVolume
+  amixer set Master 5+
+
+XF86AudioLowerVolume
+  amixer set Master 5-
+
+XF86AudioMute
+  amixer set Master toggle
