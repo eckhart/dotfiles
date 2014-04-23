@@ -5,7 +5,7 @@
 bspc rule -a \* floating=on
 bspc rule -a urxvt floating=off
 bspc rule -a Gimp desktop=^8
-bspc rule -a Chromium-browser desktop=^2 follow=on
+bspc rule -a Chromium-browser desktop=^10 follow=on
 bspc rule -a VirtualBox desktop=^3
 bspc rule -a xcalc floating=off pseudo_tiled=on
 
