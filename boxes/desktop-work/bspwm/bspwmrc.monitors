@@ -1,7 +1,7 @@
 bspc monitor -f DVI-I-2
-bspc monitor -d I II III IV V VI VII VIII IX 
+bspc monitor -d I II III IV V VI VII VIII
 bspc monitor -f DVI-I-3
-bspc monitor -d X
+bspc monitor -d IX X
 
 bspc config -m DVI-I-2 top_padding 18
 bspc config -m DVI-I-3 left_padding 228
