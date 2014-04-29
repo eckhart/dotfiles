@@ -53,6 +53,7 @@ if has("unix")
   Bundle 'https://github.com/Shougo/neosnippet.vim'
   Bundle 'https://github.com/Shougo/neosnippet-snippets'
   Bundle 'https://github.com/adonis0147/prettyGuides'
+  Bundle 'https://github.com/taylor/vim-zoomwin'
 
   filetype plugin indent on
 
