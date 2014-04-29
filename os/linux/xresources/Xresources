@@ -2,8 +2,8 @@
 
 urxvt*cursorBlink: true
 URxvt.scrollBar: false
-URxvt.font: *-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1
-URxvt.boldFont: *-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1
+URxvt.font: *-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
+URxvt.boldFont: *-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
 urxvt*geometry: 100x35
 
 URxvt.perl-ext:	  default,matcher
