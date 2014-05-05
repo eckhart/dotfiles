@@ -35,6 +35,18 @@ super + alt + {equal,minus}
   wg=$(bspc config -d focused window_gap); \
   bspc config -d focused window_gap $((wg {+,- (wg >= 3) *} 3))
 
+alt + {_, shift} + Right
+  bspc config -d focused right_padding $((`bspc config -d focused right_padding` {+,-} 20 ))
+
+alt + {_, shift} + Left
+  bspc config -d focused left_padding $((`bspc config -d focused left_padding` {+,-} 20 ))
+
+alt + {_, shift} + Down
+  bspc config -d focused bottom_padding $((`bspc config -d focused bottom_padding` {+,-} 20 ))
+
+alt + {_, shift} + Up
+  bspc config -d focused top_padding $((`bspc config -d focused top_padding` {+,-} 20 ))
+
 super + Tab
   bspc window -f next
 
