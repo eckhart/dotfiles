@@ -22,6 +22,21 @@ set pastetoggle=<F2>  " For pasting
 set laststatus=2
 set completeopt=menuone,longest,preview
 
+" Clever shortcuts
+
+let mapleader = "\<Space>"
+
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>s :wq<CR>
+
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Linux\n" || "Darwin\n"
