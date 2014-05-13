@@ -61,7 +61,6 @@ if has("unix")
   Bundle 'https://github.com/scrooloose/syntastic'
   Bundle 'https://github.com/rodjek/vim-puppet'
   Bundle 'https://github.com/vim-ruby/vim-ruby'
-  Bundle 'https://github.com/scrooloose/nerdtree'
   Bundle 'https://github.com/marcweber/vim-addon-mw-utils'
   Bundle 'https://github.com/tomtom/tlib_vim'
   Bundle 'https://github.com/Shougo/neocomplete.vim'
