@@ -35,7 +35,16 @@ vmap <Leader>P "+P
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
+nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader>s :wq<CR>
+
+nnoremap <silent> <Leader>k :wincmd k<CR>
+nnoremap <silent> <Leader>j :wincmd j<CR>
+nnoremap <silent> <Leader>h :wincmd h<CR>
+nnoremap <silent> <Leader>l :wincmd l<CR>
+
+nmap <silent> <Leader>c :sp<CR>
+nmap <silent> <Leader>C :vs<CR>
 
 if has("unix")
   let s:uname = system("uname")
@@ -139,13 +148,12 @@ if has("unix")
   " miniBufExpl
   let g:miniBufExplMapWindowNavVim = 1 
   let g:miniBufExplMapWindowNavArrows = 1 
-  let g:miniBufExplMapCTabSwitchBufs = 0 
+  let g:miniBufExplMapCTabSwitchBufs = 1 
   let g:miniBufExplModSelTarget = 1 
-
-  " Since I can't get C-Tab to work for switching buffer...
-  map <LEADER>l :bn<CR>
-  map <LEADER>h :bp<CR>
   
+  map <leader><TAB> :bn<CR>
+  map <leader><S-TAB> :bp<CR>
+
   " neocomplete 
   let g:acp_enableAtStartup = 0
   let g:neocomplete#enable_at_startup = 1
