@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ln -sf $HOME/.config/tmux/tmux $HOME/.tmux.conf
