@@ -50,8 +50,8 @@ set -o vi
 bindkey '^R' history-incremental-search-backward
 
 # Base alias
-alias ssh='TERM=rxvt-unicode ssh'
-alias vagrant='TERM=rxvt-unicode vagrant'
+alias ssh='TERM=xterm LANG=en_US.UTF-8 ssh'
+alias vagrant='TERM=xterm vagrant'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
