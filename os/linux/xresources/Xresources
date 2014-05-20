@@ -6,6 +6,9 @@ URxvt.font: *-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1,-misc-stlarch-medium-r
 URxvt.boldFont: *-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
 urxvt*geometry: 100x35
 
+URxvt.keysym.C-7: command:\033]710;*-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1\007\033]711;*-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1\007
+URxvt.keysym.C-8: command:\033]710;*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-1\007\033]711;*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-1\007
+
 URxvt.perl-ext:	  default,matcher
 URxvt.perl-ext-common: clipboard,font-size,vim-scrollback
 
