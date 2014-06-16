@@ -46,167 +46,160 @@ nnoremap <silent> <Leader>l :wincmd l<CR>
 nmap <silent> <Leader>c :sp<CR>
 nmap <silent> <Leader>C :vs<CR>
 
-if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Linux\n" || "Darwin\n"
+" follow XDG directory specifications (darwin too for convenience)
+let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+set directory=$XDG_CACHE_HOME/vim
+set viminfo+=n$XDG_CACHE_HOME/viminfo
+set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/bundle/vundle
 
-  " follow XDG directory specifications (darwin too for convenience)
-  let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
-  set directory=$XDG_CACHE_HOME/vim
-  set viminfo+=n$XDG_CACHE_HOME/viminfo
-  set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/bundle/vundle
+" load vundle, options are required
+set nocompatible
+filetype off
+call vundle#rc("$XDG_CONFIG_HOME/vim/bundle")
 
-  " load vundle, options are required
-  set nocompatible
-  filetype off
-  call vundle#rc("$XDG_CONFIG_HOME/vim/bundle")
+" let vundle manage itself
+Bundle 'gmarik/vundle'
 
-  " let vundle manage itself
-  Bundle 'gmarik/vundle'
+" bundle packages
+Bundle 'https://github.com/scrooloose/nerdtree'
+Bundle 'https://github.com/fholgado/minibufexpl.vim'
+Bundle 'https://github.com/scrooloose/syntastic'
+Bundle 'https://github.com/rodjek/vim-puppet'
+Bundle 'https://github.com/vim-ruby/vim-ruby'
+Bundle 'https://github.com/marcweber/vim-addon-mw-utils'
+Bundle 'https://github.com/tomtom/tlib_vim'
+Bundle 'https://github.com/Shougo/neocomplete.vim'
+Bundle 'https://github.com/Shougo/neosnippet.vim'
+Bundle 'https://github.com/Shougo/neosnippet-snippets'
+Bundle 'https://github.com/adonis0147/prettyGuides'
+Bundle 'https://github.com/taylor/vim-zoomwin'
 
-  " bundle packages
-  Bundle 'https://github.com/scrooloose/nerdtree'
-  Bundle 'https://github.com/fholgado/minibufexpl.vim'
-  Bundle 'https://github.com/scrooloose/syntastic'
-  Bundle 'https://github.com/rodjek/vim-puppet'
-  Bundle 'https://github.com/vim-ruby/vim-ruby'
-  Bundle 'https://github.com/marcweber/vim-addon-mw-utils'
-  Bundle 'https://github.com/tomtom/tlib_vim'
-  Bundle 'https://github.com/Shougo/neocomplete.vim'
-  Bundle 'https://github.com/Shougo/neosnippet.vim'
-  Bundle 'https://github.com/Shougo/neosnippet-snippets'
-  Bundle 'https://github.com/adonis0147/prettyGuides'
-  Bundle 'https://github.com/taylor/vim-zoomwin'
+filetype plugin indent on
 
-  filetype plugin indent on
+" fix colors for erosion urxvt colorscheme {
 
-  " fix colors for erosion urxvt colorscheme {
+  " syntax highlighting groups
+  hi Comment      ctermfg=12
+  hi Constant     ctermfg=15 
+  hi Identifier   ctermfg=4
+  hi Statement    ctermfg=2
+  hi PreProc      ctermfg=6
+  hi Type         ctermfg=1
+  hi Special      ctermfg=3
+  hi Underlined   ctermfg=7
+  hi Ignore       ctermfg=9
+  hi Error        ctermbg=7 ctermfg=11
+  hi Todo         ctermfg=1
+  hi Normal ctermfg=none ctermbg=none
+  hi NonText ctermfg=0 ctermbg=none
+  hi Directory        ctermfg=12
 
-    " syntax highlighting groups
-    hi Comment      ctermfg=12
-    hi Constant     ctermfg=15 
-    hi Identifier   ctermfg=4
-    hi Statement    ctermfg=2
-    hi PreProc      ctermfg=6
-    hi Type         ctermfg=1
-    hi Special      ctermfg=3
-    hi Underlined   ctermfg=7
-    hi Ignore       ctermfg=9
-    hi Error        ctermbg=7 ctermfg=11
-    hi Todo         ctermfg=1
-    hi Normal ctermfg=none ctermbg=none
-    hi NonText ctermfg=0 ctermbg=none
-    hi Directory        ctermfg=12
+  hi VertSplit        ctermfg=black
+  hi StatusLine        ctermfg=green
+  hi StatusLineNC        ctermfg=0 
 
-    hi VertSplit        ctermfg=black
-    hi StatusLine        ctermfg=green
-    hi StatusLineNC        ctermfg=0 
+  hi Folded ctermbg=0 ctermfg=8
 
-    hi Folded ctermbg=0 ctermfg=8
+  hi Pmenu ctermfg=10 ctermbg=0
+  hi PmenuSel ctermfg=0 ctermbg=14
+  hi LineNr ctermfg=8 ctermbg=none
+  hi CursorLine ctermfg=none ctermbg=none cterm=none
+  hi CursorLineNr ctermfg=none ctermbg=0 
+  hi CursorColumn ctermfg=none ctermbg=0
 
-    hi Pmenu ctermfg=10 ctermbg=0
-    hi PmenuSel ctermfg=0 ctermbg=14
-    hi LineNr ctermfg=8 ctermbg=none
-    hi CursorLine ctermfg=none ctermbg=none cterm=none
-    hi CursorLineNr ctermfg=none ctermbg=0 
-    hi CursorColumn ctermfg=none ctermbg=0
+ " Syntax checker colors
+  highlight SignColumn ctermbg=none
+  hi SyntasticErrorSign ctermfg=1 ctermbg=none
+  hi SyntasticWarningSign ctermfg=3 ctermbg=none
+  hi SyntasticStyleErrorSign ctermfg=1 ctermbg=none
+  hi SyntasticStyleWarningSign ctermfg=3 ctermbg=none
+  hi SyntasticErrorLine ctermfg=none ctermbg=none
+  hi SyntasticWarningLine ctermfg=none ctermbg=none
+  hi SyntasticStyleErrorLine ctermfg=none ctermbg=none
+  hi SyntasticStyleWarningLine ctermfg=none ctermbg=none
+  hi SpellBad ctermfg=0 ctermbg=3
+  hi SpellCap ctermfg=0 ctermbg=1
 
-   " Syntax checker colors
-    highlight SignColumn ctermbg=none
-    hi SyntasticErrorSign ctermfg=1 ctermbg=none
-    hi SyntasticWarningSign ctermfg=3 ctermbg=none
-    hi SyntasticStyleErrorSign ctermfg=1 ctermbg=none
-    hi SyntasticStyleWarningSign ctermfg=3 ctermbg=none
-    hi SyntasticErrorLine ctermfg=none ctermbg=none
-    hi SyntasticWarningLine ctermfg=none ctermbg=none
-    hi SyntasticStyleErrorLine ctermfg=none ctermbg=none
-    hi SyntasticStyleWarningLine ctermfg=none ctermbg=none
-    hi SpellBad ctermfg=0 ctermbg=3
-    hi SpellCap ctermfg=0 ctermbg=1
+"}
 
-  "}
-  
-  map <leader>n :NERDTreeToggle<CR>
-  
-  " map for syntastic errors window
-  nnoremap <LEADER>e :Errors<CR>
-  
-  " autoclose syntastic's error windown when no errors
-  let g:syntastic_auto_loc_list=2
-  
-  " syntastic checking mode
-  let g:syntastic_mode_map = { 'mode': 'active',                              
-        \ 'active_filetypes': ['ruby', 'python', 'perl', 'shell', 'puppet' ],           
-        \ 'passive_filetypes': ['php', 'html'] }
-  
-  " check syntax on file open
-  let g:syntastic_check_on_open=1
-  
-  " enable puppet module detection
-  let g:puppet_module_detect=1
-  
-  " miniBufExpl
-  let g:miniBufExplMapWindowNavVim = 1 
-  let g:miniBufExplMapWindowNavArrows = 1 
-  let g:miniBufExplMapCTabSwitchBufs = 1 
-  let g:miniBufExplModSelTarget = 1 
-  
-  map <leader><TAB> :bn<CR>
-  map <leader><S-TAB> :bp<CR>
+map <leader>n :NERDTreeToggle<CR>
 
-  " neocomplete 
-  let g:acp_enableAtStartup = 0
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#enable_camel_case = 1
-  let g:neocomplete#enable_underbar_case = 1
-  let g:neocomplete#enable_auto_delimiter = 1
-  let g:neocomplete#max_list = 15
-  let g:neocomplete#force_overwrite_completefunc = 1
+" map for syntastic errors window
+nnoremap <LEADER>e :Errors<CR>
 
-  " Define keyword.
-  if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-  endif
-  let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" autoclose syntastic's error windown when no errors
+let g:syntastic_auto_loc_list=2
 
-  " <TAB>: completion.
-  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+" syntastic checking mode
+let g:syntastic_mode_map = { 'mode': 'active',                              
+      \ 'active_filetypes': ['ruby', 'python', 'perl', 'shell', 'puppet' ],           
+      \ 'passive_filetypes': ['php', 'html'] }
 
-  " Enable omni completion.
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+" check syntax on file open
+let g:syntastic_check_on_open=1
 
-  " Enable heavy omni completion.
-  if !exists('g:neocomplete#sources#omni#input_patterns')
-   let g:neocomplete#sources#omni#input_patterns = {}
-  endif
-  if !exists('g:neocomplete#force_omni_input_patterns')
-   let g:neocomplete#force_omni_input_patterns = {}
-  endif
+" enable puppet module detection
+let g:puppet_module_detect=1
 
-  " neocomplete end
-  
-  " neosnippet
-  " Plugin key-mappings.
-  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  
-  " For snippet_complete marker.
-  if has('conceal')
-    set conceallevel=2 concealcursor=i
-  endif
+" miniBufExpl
+let g:miniBufExplMapWindowNavVim = 1 
+let g:miniBufExplMapWindowNavArrows = 1 
+let g:miniBufExplMapCTabSwitchBufs = 1 
+let g:miniBufExplModSelTarget = 1 
 
-  " prettyguides
-  let g:PrettyGuidesChar = '│'
+map <leader><TAB> :bn<CR>
+map <leader><S-TAB> :bp<CR>
 
-  endif
-endif 
+" neocomplete 
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_camel_case = 1
+let g:neocomplete#enable_underbar_case = 1
+let g:neocomplete#enable_auto_delimiter = 1
+let g:neocomplete#max_list = 15
+let g:neocomplete#force_overwrite_completefunc = 1
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" <TAB>: completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+ let g:neocomplete#sources#omni#input_patterns = {}
+endif
+if !exists('g:neocomplete#force_omni_input_patterns')
+ let g:neocomplete#force_omni_input_patterns = {}
+endif
+
+" neocomplete end
+
+" neosnippet
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" prettyguides
+let g:PrettyGuidesChar = '│'
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
