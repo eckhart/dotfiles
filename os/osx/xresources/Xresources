@@ -1,0 +1,17 @@
+#include "colors/beastie"
+
+URxvt*cursorBlink: true
+URxvt.scrollBar: false
+URxvt.font: *-terminus12-*-*-*-*-12-*-*-*-*-*-*-*
+URxvt.boldFont: *-terminus12-*-*-*-*-12-*-*-*-*-*-*-*
+URxvt*geometry: 100x35
+URxvt*internalBorder: 0
+URxvt*externalBorder: 0
+
+URxvt.perl-ext-common: default,clipboard
+URxvt.clipboard.copycmd:  pbcopy
+URxvt.clipboard.pastecmd: pbpaste
+URxvt.keysym.Mod2-c: perl:clipboard:copy
+URxvt.keysym.Mod2-v: perl:clipboard:paste
+URxvt-url-select.launcher:  open -a Google\ Chrome
+URxvt*url-select.underline: true

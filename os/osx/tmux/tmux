@@ -1,0 +1,4 @@
+# Make tmux use system clipboard
+set-option -g default-command "reattach-to-user-namespace -l zsh"
+
+bind y run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
