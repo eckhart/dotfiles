@@ -1,6 +1,6 @@
 # Base
 typeset -U path
-path=(~/bin ~/.local/bin $path)
+path=(~/bin /usr/local/bin ~/.local/bin $path)
 
 export EDITOR="vim"
 export LESS="-R"
