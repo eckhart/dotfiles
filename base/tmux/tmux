@@ -6,7 +6,9 @@ set -g status-utf8 on
 # Use C-Space as prefix
 unbind C-b
 set -g prefix C-Space
-bind Space send-prefix
+
+# Different prefix for nested session
+bind-key -n C-a send-prefix
 
 # Vim keybindings
 set -g mode-keys vi
@@ -53,20 +55,13 @@ set -g pane-border-fg black
 set -g pane-border-bg default
 
 # window status
-setw -g window-status-format " #F#I:#W#F "
-setw -g window-status-current-format " #F#I:#W#F "
-setw -g window-status-format "#[fg=colour0]#[bg=colour5] #I #W "
-setw -g window-status-current-format "#[bg=colour0]#[fg=colour1] #I #W "
-setw -g window-status-current-bg colour11
-setw -g window-status-current-fg colour11
-setw -g window-status-current-attr dim
-setw -g window-status-fg colour3
-setw -g window-status-attr reverse
-setw -g window-status-content-bg colour238
-setw -g window-status-content-fg colour11
-setw -g window-status-content-attr bold,blink,reverse
-
-#set-option -gw window-status-format "#I:#10W#F"
+setw -g window-status-fg white
+setw -g window-status-attr none
+setw -g window-status-current-fg white 
+setw -g window-status-current-bg default
+setw -g window-status-current-attr none
+setw -g window-status-format "#[bg=cyan,fg=black] #I #[bg=blue,fg=black] #W "
+setw -g window-status-current-format "#[bg=cyan,fg=brightwhite] #I #[bg=blue,fg=brightwhite] #W "
 
 # Movement 
 unbind j
