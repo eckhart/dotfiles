@@ -5,7 +5,7 @@ URxvt.scrollBar: false
 URxvt.font: *-terminus12-*-*-*-*-12-*-*-*-*-*-*-*
 URxvt.boldFont: *-terminus12-*-*-*-*-12-*-*-*-*-*-*-*
 URxvt*geometry: 100x35
-URxvt*internalBorder: 0
+URxvt*internalBorder: 15
 URxvt*externalBorder: 0
 
 URxvt.perl-ext-common: default,clipboard
