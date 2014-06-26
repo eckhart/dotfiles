@@ -38,11 +38,6 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
 nnoremap <Leader>s :wq<CR>
 
-nnoremap <silent> <Leader>k :wincmd k<CR>
-nnoremap <silent> <Leader>j :wincmd j<CR>
-nnoremap <silent> <Leader>h :wincmd h<CR>
-nnoremap <silent> <Leader>l :wincmd l<CR>
-
 nmap <silent> <Leader>c :sp<CR>
 nmap <silent> <Leader>C :vs<CR>
 
@@ -73,6 +68,7 @@ Bundle 'https://github.com/Shougo/neosnippet.vim'
 Bundle 'https://github.com/Shougo/neosnippet-snippets'
 Bundle 'https://github.com/adonis0147/prettyGuides'
 Bundle 'https://github.com/taylor/vim-zoomwin'
+Bundle 'https://github.com/christoomey/vim-tmux-navigator'
 
 filetype plugin indent on
 
