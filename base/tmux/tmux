@@ -79,14 +79,14 @@ bind -n S-Up resize-pane -U 5
 # Splits and windows
 unbind c
 bind-key Enter command-prompt -p "Project:" "new-window -n '%%'"
-bind-key c split-window
-bind-key C split-window -h
+bind-key c split-window -c "#{pane_current_path}"
+bind-key C split-window -h -c "#{pane_current_path}"
 
 # Other binds
 bind-key r source ~/.tmux.conf \; display "Reloaded!"
 bind-key X kill-session
 bind-key m command-prompt "split-window 'exec man %%'"
-bind-key i set-option -g status
+bind-key i set-option status
 
 # Copy mode
 bind Space copy-mode
