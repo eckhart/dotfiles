@@ -36,6 +36,8 @@ vmap <Leader>P "+P
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
+nnoremap <Leader>a :qa<CR>
+nnoremap <Leader>A :qa!<CR>
 nnoremap <Leader>s :wq<CR>
 
 nmap <silent> <Leader>c :sp<CR>
@@ -90,9 +92,10 @@ filetype plugin indent on
   hi NonText ctermfg=0 ctermbg=none
   hi Directory        ctermfg=12
 
-  hi VertSplit        ctermfg=black
-  hi StatusLine        ctermfg=green
-  hi StatusLineNC        ctermfg=0 
+  hi VertSplit    ctermfg=0 ctermbg=None cterm=None
+  set fillchars+=vert:\│
+  hi StatusLine   ctermfg=green
+  hi StatusLineNC ctermfg=0 
 
   hi Folded ctermbg=0 ctermfg=8
 
