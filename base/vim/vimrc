@@ -71,55 +71,18 @@ Bundle 'https://github.com/Shougo/neosnippet-snippets'
 Bundle 'https://github.com/adonis0147/prettyGuides'
 Bundle 'https://github.com/taylor/vim-zoomwin'
 Bundle 'https://github.com/christoomey/vim-tmux-navigator'
+Bundle 'https://github.com/nanotech/jellybeans.vim'
 
 filetype plugin indent on
 
-" fix colors for erosion urxvt colorscheme {
+autocmd ColorScheme * highlight Normal ctermbg=None
+autocmd ColorScheme * highlight NonText ctermbg=None
+colorscheme jellybeans
 
-  " syntax highlighting groups
-  hi Comment      ctermfg=12
-  hi Constant     ctermfg=15 
-  hi Identifier   ctermfg=4
-  hi Statement    ctermfg=2
-  hi PreProc      ctermfg=6
-  hi Type         ctermfg=1
-  hi Special      ctermfg=3
-  hi Underlined   ctermfg=7
-  hi Ignore       ctermfg=9
-  hi Error        ctermbg=7 ctermfg=11
-  hi Todo         ctermfg=1
-  hi Normal ctermfg=none ctermbg=none
-  hi NonText ctermfg=0 ctermbg=none
-  hi Directory        ctermfg=12
+" prettier vertical split
 
-  hi VertSplit    ctermfg=0 ctermbg=None cterm=None
-  set fillchars+=vert:\│
-  hi StatusLine   ctermfg=green
-  hi StatusLineNC ctermfg=0 
-
-  hi Folded ctermbg=0 ctermfg=8
-
-  hi Pmenu ctermfg=10 ctermbg=0
-  hi PmenuSel ctermfg=0 ctermbg=14
-  hi LineNr ctermfg=8 ctermbg=none
-  hi CursorLine ctermfg=none ctermbg=none cterm=none
-  hi CursorLineNr ctermfg=none ctermbg=0 
-  hi CursorColumn ctermfg=none ctermbg=0
-
- " Syntax checker colors
-  highlight SignColumn ctermbg=none
-  hi SyntasticErrorSign ctermfg=1 ctermbg=none
-  hi SyntasticWarningSign ctermfg=3 ctermbg=none
-  hi SyntasticStyleErrorSign ctermfg=1 ctermbg=none
-  hi SyntasticStyleWarningSign ctermfg=3 ctermbg=none
-  hi SyntasticErrorLine ctermfg=none ctermbg=none
-  hi SyntasticWarningLine ctermfg=none ctermbg=none
-  hi SyntasticStyleErrorLine ctermfg=none ctermbg=none
-  hi SyntasticStyleWarningLine ctermfg=none ctermbg=none
-  hi SpellBad ctermfg=0 ctermbg=3
-  hi SpellCap ctermfg=0 ctermbg=1
-
-"}
+hi VertSplit    ctermfg=0 ctermbg=None cterm=None
+set fillchars+=vert:\│
 
 map <leader>n :NERDTreeToggle<CR>
 

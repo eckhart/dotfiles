@@ -1,4 +1,4 @@
-#include "colors/beastie"
+#include "colors/jellybeans"
 
 URxvt*cursorBlink: true
 URxvt.scrollBar: false
