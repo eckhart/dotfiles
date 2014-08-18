@@ -72,8 +72,15 @@ Bundle 'https://github.com/adonis0147/prettyGuides'
 Bundle 'https://github.com/taylor/vim-zoomwin'
 Bundle 'https://github.com/christoomey/vim-tmux-navigator'
 Bundle 'https://github.com/nanotech/jellybeans.vim'
+Bundle 'https://github.com/majutsushi/tagbar'
 
 filetype plugin indent on
+
+" For C
+autocmd FileType c set tabstop=4|set softtabstop=4|set shiftwidth=4|set noexpandtab
+autocmd BufRead,BufNewFile *.h,*.c set filetype=c
+
+nmap <Leader>t :TagbarToggle<CR>
 
 autocmd ColorScheme * highlight Normal ctermbg=None
 autocmd ColorScheme * highlight NonText ctermbg=None
