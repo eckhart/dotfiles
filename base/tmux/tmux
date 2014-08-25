@@ -60,8 +60,8 @@ setw -g window-status-attr none
 setw -g window-status-current-fg white 
 setw -g window-status-current-bg default
 setw -g window-status-current-attr none
-setw -g window-status-format "#[bg=cyan,fg=black] #I #[bg=blue,fg=black] #W "
-setw -g window-status-current-format "#[bg=cyan,fg=brightwhite] #I #[bg=blue,fg=brightwhite] #W "
+setw -g window-status-format "#[bg=default,fg=brightblack]#I #[bg=default,fg=brightblack]#W "
+setw -g window-status-current-format "#[bg=black,fg=brightwhite] #I #[bg=default,fg=brightwhite] #W "
 
 # Seamless navigation between tmux panes and vim splits
 bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\/)g?(view|vim?)(diff)?$' && tmux send-keys C-h) || tmux select-pane -L"
