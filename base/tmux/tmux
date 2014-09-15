@@ -45,6 +45,9 @@ set -g pane-border-bg default
 
 set -g status-justify left
 
+set -g status-left ""
+set -g status-right ""
+
 set -g status-right "#[bg=black] \[#S\] #{pane_current_path} #(~/bin/git-info)"
 set -g status-right-length 100
 setw -g window-status-format "#[bg=brightgreen,fg=black] #I #[bg=default,fg=black] #W "
