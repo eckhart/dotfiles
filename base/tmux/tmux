@@ -30,38 +30,27 @@ set -g pane-base-index 1
 # Looks
 set -g status on
 set -g status-position top
-set -g status-left ""
-set -g status-right ""
-#set -g status-justify centre
-set -g status-justify left
-#set -g status-bg black
-#set -g status-fg white
-#set -g status-attr bright
-#set -g message-bg black
-#set -g message-fg white
-#set -g message-attr bright
-
-set -g status-bg default
+set -g status-bg green
 set -g status-fg default 
 
-set -g message-fg black
-set -g message-bg blue
-set -g message-command-fg black
-set -g message-command-bg blue
+set -g message-fg brightwhite
+set -g message-bg black
+set -g message-command-fg brightwhite
+set -g message-command-bg black
 
-set -g pane-active-border-fg white
+set -g pane-active-border-fg brightgreen
 set -g pane-active-border-bg default
 set -g pane-border-fg black
 set -g pane-border-bg default
 
-# window status
-setw -g window-status-fg white
-setw -g window-status-attr none
-setw -g window-status-current-fg white 
-setw -g window-status-current-bg default
-setw -g window-status-current-attr none
-setw -g window-status-format "#[bg=default,fg=brightblack]#I #[bg=default,fg=brightblack]#W "
-setw -g window-status-current-format "#[bg=black,fg=brightwhite] #I #[bg=default,fg=brightwhite] #W "
+set -g status-justify left
+
+set -g status-right "#[bg=black] \[#S\] #{pane_current_path} #(~/bin/git-info)"
+set -g status-right-length 100
+setw -g window-status-format "#[bg=brightgreen,fg=black] #I #[bg=default,fg=black] #W "
+setw -g window-status-current-format "#[bg=black,fg=brightwhite] #I #[bg=default,fg=black] #W "
+
+set -g status-interval 1
 
 # Seamless navigation between tmux panes and vim splits
 bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\/)g?(view|vim?)(diff)?$' && tmux send-keys C-h) || tmux select-pane -L"
