@@ -1,0 +1,16 @@
+geometry 98x98
+
+background  #181513
+foreground  #bea492
+secondColor #332d29
+minuteColor #646a6d
+hourColor   #746c48
+
+dayColor    #857b52
+AMPMColor   #857b52
+dateColor   #857b52
+
+fancyHands      1
+outlinedHands   0
+neonHands       1
+drawAllTicks    1
