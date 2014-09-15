@@ -5,7 +5,7 @@ ZSH=$XDG_CONFIG_HOME/zsh/oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pygmalion-mod"
+ZSH_THEME="eckhart"
 
 ZSH_CUSTOM=$XDG_CONFIG_HOME/zsh/oh-my-zsh-custom
 
@@ -62,3 +62,4 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias mkdir='mkdir -p -v'
 alias cal='cal -3'
+alias ta='tmux -2 attach -d'
