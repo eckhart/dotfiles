@@ -1,4 +1,4 @@
-#include "colors/jellybeans"
+#include "colors/erosionedit"
 
 URxvt*cursorBlink: true
 URxvt.scrollBar: false
