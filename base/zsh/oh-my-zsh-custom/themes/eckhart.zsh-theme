@@ -1,7 +1,7 @@
 local return_code="%(?..%{$R%}%? ↵%{$RESET%})"
 
 prompt_setup_pygmalion(){
-  base_prompt="%{$fg[black]%}────%{$reset_color%}  "
+  base_prompt="%{$fg[white]%}────%{$reset_color%}  "
 
   base_prompt_nocolor=$(echo "$base_prompt" | perl -pe "s/%\{[^}]+\}//g")
 
