@@ -43,6 +43,8 @@ nnoremap <Leader>s :wq<CR>
 nmap <silent> <Leader>c :sp<CR>
 nmap <silent> <Leader>C :vs<CR>
 
+nnoremap <Leader>l :set list!<CR>
+
 " follow XDG directory specifications (darwin too for convenience)
 let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 set directory=$XDG_CACHE_HOME/vim
@@ -71,8 +73,8 @@ Bundle 'https://github.com/Shougo/neosnippet-snippets'
 Bundle 'https://github.com/adonis0147/prettyGuides'
 Bundle 'https://github.com/taylor/vim-zoomwin'
 Bundle 'https://github.com/christoomey/vim-tmux-navigator'
-Bundle 'https://github.com/nanotech/jellybeans.vim'
 Bundle 'https://github.com/majutsushi/tagbar'
+Bundle 'https://github.com/junegunn/goyo.vim'
 
 filetype plugin indent on
 
@@ -80,17 +82,40 @@ filetype plugin indent on
 autocmd FileType c set tabstop=4|set softtabstop=4|set shiftwidth=4|set noexpandtab
 autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 
-nmap <Leader>t :TagbarToggle<CR>
+hi Comment      ctermfg=8
+hi StatusLine ctermfg=none ctermbg=0 cterm=none
+hi StatusLineNC ctermfg=none ctermbg=0 cterm=none
+hi Visual term=reverse cterm=reverse ctermbg=0
 
-autocmd ColorScheme * highlight Normal ctermbg=None
-autocmd ColorScheme * highlight NonText ctermbg=None
-autocmd ColorScheme * highlight LineNr ctermbg=None
-colorscheme jellybeans
+hi ErrorMsg ctermfg=none ctermbg=0
+
+hi Folded ctermbg=0 ctermfg=8
+
+hi Pmenu ctermfg=8 ctermbg=0
+hi PmenuSel ctermfg=0 ctermbg=15
+hi LineNr ctermfg=0 ctermbg=none
+hi CursorLine ctermfg=none ctermbg=none cterm=none
+hi CursorLineNr ctermfg=none ctermbg=0 
+hi CursorColumn ctermfg=none ctermbg=0
+
+" Syntax checker colors
+hi SignColumn ctermbg=none
+hi SyntasticErrorSign ctermfg=1 ctermbg=none
+hi SyntasticWarningSign ctermfg=3 ctermbg=none
+hi SyntasticStyleErrorSign ctermfg=1 ctermbg=none
+hi SyntasticStyleWarningSign ctermfg=3 ctermbg=none
+hi SyntasticErrorLine ctermfg=none ctermbg=none
+hi SyntasticWarningLine ctermfg=none ctermbg=none
+hi SyntasticStyleErrorLine ctermfg=none ctermbg=none
+hi SyntasticStyleWarningLine ctermfg=none ctermbg=none
+hi SpellBad ctermfg=0 ctermbg=3
+hi SpellCap ctermfg=0 ctermbg=1
 
 " prettier vertical split
-
 hi VertSplit    ctermfg=0 ctermbg=None cterm=None
 set fillchars+=vert:\│
+
+nmap <Leader>t :TagbarToggle<CR>
 
 map <leader>n :NERDTreeToggle<CR>
 
@@ -175,3 +200,4 @@ let g:PrettyGuidesChar = '│'
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
+
