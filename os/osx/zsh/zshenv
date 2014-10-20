@@ -1,0 +1,1 @@
+path=(~/bin /opt/local/bin /usr/local/bin ~/.local/bin $path)
