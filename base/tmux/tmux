@@ -20,6 +20,8 @@ set-option -g default-shell /bin/zsh
 
 set-option -g allow-rename off
 
+set-option -g renumber-windows on
+
 # Speed up commands
 set-option -sg escape-time 0
 
