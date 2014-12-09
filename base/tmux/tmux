@@ -29,6 +29,9 @@ set-option -sg escape-time 0
 set -g base-index 1
 set -g pane-base-index 1
 
+# Turn on window titles
+set -g set-titles on
+
 # Looks
 set -g status on
 set -g status-position top
