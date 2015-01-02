@@ -1,49 +1,5 @@
-if has("syntax")
-  syntax on
-endif
-
-set background=dark
-
-" Enable code folding, type za to open and close
-set foldmethod=indent
-set foldlevel=99
-
-" Indent
-set smartindent
-set tabstop=2
-set shiftwidth=2
-set expandtab
-
-set mouse=a		" Enable mouse usage (all modes)
-set number
-set backspace=2   " Makes backspace work like it should!
-set incsearch
-set pastetoggle=<F2>  " For pasting
-set laststatus=2
-set completeopt=menuone,longest,preview
-
-" Clever shortcuts
-
-let mapleader = "\<Space>"
-
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
-
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>Q :q!<CR>
-nnoremap <Leader>a :qa<CR>
-nnoremap <Leader>A :qa!<CR>
-nnoremap <Leader>s :wq<CR>
-
-nmap <silent> <Leader>c :sp<CR>
-nmap <silent> <Leader>C :vs<CR>
-
-nnoremap <Leader>l :set list!<CR>
+" GENERAL
+" -------
 
 " follow XDG directory specifications (darwin too for convenience)
 let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
@@ -51,36 +7,98 @@ set directory=$XDG_CACHE_HOME/vim
 set viminfo+=n$XDG_CACHE_HOME/viminfo
 set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/bundle/vundle
 
-" load vundle, options are required
 set nocompatible
-filetype off
-call vundle#rc("$XDG_CONFIG_HOME/vim/bundle")
+let mapleader = "\<Space>"
+set hidden  " abandon buffer when unloaded
 
-" let vundle manage itself
-Bundle 'gmarik/vundle'
+" NAVIGATION
+" ----------
 
-" bundle packages
-Bundle 'https://github.com/scrooloose/nerdtree'
-Bundle 'https://github.com/fholgado/minibufexpl.vim'
-Bundle 'https://github.com/scrooloose/syntastic'
-Bundle 'https://github.com/rodjek/vim-puppet'
-Bundle 'https://github.com/vim-ruby/vim-ruby'
-Bundle 'https://github.com/marcweber/vim-addon-mw-utils'
-Bundle 'https://github.com/tomtom/tlib_vim'
-Bundle 'https://github.com/Shougo/neocomplete.vim'
-Bundle 'https://github.com/Shougo/neosnippet.vim'
-Bundle 'https://github.com/Shougo/neosnippet-snippets'
-Bundle 'https://github.com/adonis0147/prettyGuides'
-Bundle 'https://github.com/taylor/vim-zoomwin'
-Bundle 'https://github.com/christoomey/vim-tmux-navigator'
-Bundle 'https://github.com/majutsushi/tagbar'
-Bundle 'https://github.com/junegunn/goyo.vim'
+set incsearch
 
-filetype plugin indent on
+" move up/down into wrapped lines
+nnoremap j gj
+nnoremap k gk
 
-" For C
+" use <leader>1..9 to change buffer
+for i in [1,2,3,4,5,6,7,8,9]
+  exec "map <leader>" . i . " :buffer " . i . "<cr>"
+endfor
+
+" EDITING
+" -------
+
+set autoindent
+set smartindent
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
+set mouse=a           " enable mouse usage (all modes)
+set backspace=2       " makes backspace work like it should!
+set pastetoggle=<F2>  " for pasting
+set laststatus=2      " always a statusline
+set completeopt=menuone,longest,preview
+
+" don't exit visual mode when shitfting
+vnoremap < <gv2h
+vnoremap > >gv2l
+
+" remove trailing spaces before saving
+autocmd BufWritePre * :%s/\s\+$//e
+
+" shortcuts for cut/copy/paste to/from clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" shorcuts for writing and quiting buffer
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>Q :q!<CR>
+nnoremap <Leader>a :qa<CR>
+nnoremap <Leader>A :qa!<CR>
+nnoremap <Leader>s :wq<CR>
+
+" vertical/horizontal split with <leader>cC
+nmap <silent> <Leader>c :sp<CR>
+nmap <silent> <Leader>C :vs<CR>
+
+" set list mode with <leader>l
+nnoremap <Leader>l :set list!<CR>
+
+" SPECIAL CASES
+" -------------
+
+" C
 autocmd FileType c set tabstop=4|set softtabstop=4|set shiftwidth=4|set noexpandtab
 autocmd BufRead,BufNewFile *.h,*.c set filetype=c
+
+" UI
+" --
+
+set number
+set numberwidth=4
+set ruler
+set showmatch   " when a bracket is inserted, briefly jump to the matching one.
+set linebreak   " will wrap long lines at a character in 'breakat'
+
+" hightlight cursorline with <leader>,
+nnoremap <Leader>, :set cursorline!<CR>
+" hightlight cursorcolumn with <leader>.
+nnoremap <Leader>. :set cursorcolumn!<CR>
+
+if has("syntax")
+  syntax on
+endif
+
+" look and colors
+" ---------------
+
+set background=dark
 
 hi Comment      ctermfg=8
 hi StatusLine ctermfg=none ctermbg=0 cterm=none
@@ -95,10 +113,10 @@ hi Pmenu ctermfg=8 ctermbg=0
 hi PmenuSel ctermfg=0 ctermbg=15
 hi LineNr ctermfg=0 ctermbg=none
 hi CursorLine ctermfg=none ctermbg=none cterm=none
-hi CursorLineNr ctermfg=none ctermbg=0 
+hi CursorLineNr ctermfg=none ctermbg=0
 hi CursorColumn ctermfg=none ctermbg=0
 
-" Syntax checker colors
+" syntax checker colors
 hi SignColumn ctermbg=none
 hi SyntasticErrorSign ctermfg=1 ctermbg=none
 hi SyntasticWarningSign ctermfg=3 ctermbg=none
@@ -115,19 +133,53 @@ hi SpellCap ctermfg=0 ctermbg=1
 hi VertSplit    ctermfg=0 ctermbg=None cterm=None
 set fillchars+=vert:\│
 
+" VUNDLE
+" ------
+
+filetype off
+call vundle#rc("$XDG_CONFIG_HOME/vim/bundle")
+
+" let vundle manage itself
+Bundle 'gmarik/vundle'
+
+" bundle packages
+Bundle 'https://github.com/Shougo/neocomplete.vim'
+Bundle 'https://github.com/Shougo/neosnippet-snippets'
+Bundle 'https://github.com/Shougo/neosnippet.vim'
+Bundle 'https://github.com/adonis0147/prettyGuides'
+Bundle 'https://github.com/christoomey/vim-tmux-navigator'
+Bundle 'https://github.com/fholgado/minibufexpl.vim'
+Bundle 'https://github.com/honza/vim-snippets'
+Bundle 'https://github.com/majutsushi/tagbar'
+Bundle 'https://github.com/marcweber/vim-addon-mw-utils'
+Bundle 'https://github.com/rodjek/vim-puppet'
+Bundle 'https://github.com/scrooloose/nerdtree'
+Bundle 'https://github.com/scrooloose/syntastic'
+Bundle 'https://github.com/terryma/vim-multiple-cursors'
+Bundle 'https://github.com/tomtom/tlib_vim'
+Bundle 'https://github.com/vim-ruby/vim-ruby'
+
+filetype plugin indent on
+
+" BUNDLES SPECIFIC CONFIG
+" -----------------------
+
+" SHORTCUTS
+" ---------
+
 nmap <Leader>t :TagbarToggle<CR>
-
 map <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>e :Errors<CR>
 
-" map for syntastic errors window
-nnoremap <LEADER>e :Errors<CR>
+" SYNTASTIC
+" ---------
 
 " autoclose syntastic's error windown when no errors
 let g:syntastic_auto_loc_list=2
 
 " syntastic checking mode
-let g:syntastic_mode_map = { 'mode': 'active',                              
-      \ 'active_filetypes': ['ruby', 'python', 'perl', 'shell', 'puppet' ],           
+let g:syntastic_mode_map = { 'mode': 'active',
+      \ 'active_filetypes': ['ruby', 'python', 'perl', 'shell', 'puppet' ],
       \ 'passive_filetypes': ['php', 'html'] }
 
 " check syntax on file open
@@ -136,16 +188,17 @@ let g:syntastic_check_on_open=1
 " enable puppet module detection
 let g:puppet_module_detect=1
 
-" miniBufExpl
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1 
+" MINIBUFEXPL
+" -----------
 
-map <leader><TAB> :bn<CR>
-map <leader><S-TAB> :bp<CR>
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
 
-" neocomplete 
+" NEOCOMPLETE
+" -----------
+
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
@@ -155,7 +208,7 @@ let g:neocomplete#enable_auto_delimiter = 1
 let g:neocomplete#max_list = 15
 let g:neocomplete#force_overwrite_completefunc = 1
 
-" Define keyword.
+" define keyword.
 if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}
 endif
@@ -165,7 +218,7 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
-" Enable omni completion.
+" enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -173,7 +226,7 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-" Enable heavy omni completion.
+" enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
  let g:neocomplete#sources#omni#input_patterns = {}
 endif
@@ -181,23 +234,32 @@ if !exists('g:neocomplete#force_omni_input_patterns')
  let g:neocomplete#force_omni_input_patterns = {}
 endif
 
-" neocomplete end
+" NEOSNIPPET
+" ----------
 
-" neosnippet
-" Plugin key-mappings.
+" plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
-" For snippet_complete marker.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" for snippet_complete marker.
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-" prettyguides
+" SNIPPETS SETTINGS
+" ----------------
+
+let g:snips_author = 'Anders Vaage'
+let g:snips_email = 'anders@unix.uib.no'
+
+" PRETTYGUIDES
+" ------------
+
 let g:PrettyGuidesChar = '│'
 
-" Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
-
+" source a global configuration file if available
+" if filereadable("/etc/vim/vimrc.local")
+"   source /etc/vim/vimrc.local
+" endif
