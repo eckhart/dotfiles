@@ -70,12 +70,13 @@ nmap <silent> <Leader>C :vs<CR>
 " set list mode with <leader>l
 nnoremap <Leader>l :set list!<CR>
 
-" SPECIAL CASES
-" -------------
-
-" C
-autocmd FileType c set tabstop=4|set softtabstop=4|set shiftwidth=4|set noexpandtab
-autocmd BufRead,BufNewFile *.h,*.c set filetype=c
+" spell checking
+set spelllang=en,nb,nn
+nnoremap <Leader>f :setlocal spell!<CR>
+" correct small typos to first word in wordlist
+" this will only work if NeoCompleteLock is on
+imap <c-f> <c-g>u<Esc>[s1z=`]a<c-g>u
+nmap <c-f> [s1z=<c-o>
 
 " UI
 " --
@@ -143,36 +144,57 @@ call vundle#rc("$XDG_CONFIG_HOME/vim/bundle")
 Bundle 'gmarik/vundle'
 
 " bundle packages
-Bundle 'https://github.com/Shougo/neocomplete.vim'
-Bundle 'https://github.com/Shougo/neosnippet-snippets'
-Bundle 'https://github.com/Shougo/neosnippet.vim'
-Bundle 'https://github.com/adonis0147/prettyGuides'
-Bundle 'https://github.com/christoomey/vim-tmux-navigator'
-Bundle 'https://github.com/fholgado/minibufexpl.vim'
-Bundle 'https://github.com/honza/vim-snippets'
-Bundle 'https://github.com/majutsushi/tagbar'
-Bundle 'https://github.com/marcweber/vim-addon-mw-utils'
-Bundle 'https://github.com/rodjek/vim-puppet'
-Bundle 'https://github.com/scrooloose/nerdtree'
-Bundle 'https://github.com/scrooloose/syntastic'
-Bundle 'https://github.com/terryma/vim-multiple-cursors'
-Bundle 'https://github.com/tomtom/tlib_vim'
-Bundle 'https://github.com/vim-ruby/vim-ruby'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'Shougo/neocomplete.vim'
+Bundle 'Shougo/neosnippet-snippets'
+Bundle 'Shougo/neosnippet.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'adonis0147/prettyGuides'
+Bundle 'scrooloose/syntastic'
+Bundle 'godlygeek/tabular'
+Bundle 'majutsushi/tagbar'
+Bundle 'tomtom/tlib_vim'
+Bundle 'marcweber/vim-addon-mw-utils'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-markdown'
+Bundle 'jtratner/vim-flavored-markdown'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'rodjek/vim-puppet'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'honza/vim-snippets'
+Bundle 'tpope/vim-surround'
+Bundle 'christoomey/vim-tmux-navigator'
 
 filetype plugin indent on
+
+" SPECIAL CASES
+" -------------
+
+" C
+autocmd FileType c setlocal tabstop=4|set softtabstop=4|set shiftwidth=4|set noexpandtab
+autocmd BufRead,BufNewFile *.h,*.c set filetype=c
+
+" markdown
+autocmd FileType ghmarkdown NeoCompleteLock|setlocal textwidth=80
+autocmd BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
 
 " BUNDLES SPECIFIC CONFIG
 " -----------------------
 
-" SHORTCUTS
-" ---------
+" TAGBAR
+" ------
 
 nmap <Leader>t :TagbarToggle<CR>
+
+" NERDTREE
+" --------
+
 map <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>e :Errors<CR>
 
 " SYNTASTIC
 " ---------
+
+nnoremap <leader>e :Errors<CR>
 
 " autoclose syntastic's error windown when no errors
 let g:syntastic_auto_loc_list=2
@@ -187,6 +209,20 @@ let g:syntastic_check_on_open=1
 
 " enable puppet module detection
 let g:puppet_module_detect=1
+
+" VIM-COMMENTARY
+" --------------
+autocmd FileType xdefaults set commentstring=!%s
+
+" VIM-SURROUND
+" ------------
+
+"fix surrounding for erb:
+fun! AutoCmd_ERB()
+  let b:surround_{char2nr('=')} = "<%= \r %>"
+  let b:surround_{char2nr('-')} = "<% \r %>"
+endf
+autocmd FileType eruby call AutoCmd_ERB()
 
 " MINIBUFEXPL
 " -----------
@@ -228,7 +264,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd Filetype txt NeoCompleteLock
+autocmd FileType txt NeoCompleteLock
 
 " enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -261,6 +297,8 @@ let g:snips_email = 'anders@unix.uib.no'
 " PRETTYGUIDES
 " ------------
 
+nnoremap <leader>g :PrettyGuidesToggle<CR>
+let g:PrettyGuidesEnable = 0
 let g:PrettyGuidesChar = '│'
 
 " source a global configuration file if available
