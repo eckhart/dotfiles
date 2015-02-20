@@ -4,7 +4,7 @@
 " follow XDG directory specifications (darwin too for convenience)
 let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 set directory=$XDG_CACHE_HOME/vim
-set viminfo+=n$XDG_CACHE_HOME/viminfo
+set viminfo="NONE"
 set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$XDG_CONFIG_HOME/vim/bundle/vundle
 
 set nocompatible
@@ -213,6 +213,7 @@ let g:puppet_module_detect=1
 " VIM-COMMENTARY
 " --------------
 autocmd FileType xdefaults set commentstring=!%s
+autocmd FileType puppet set commentstring=#\ %s
 
 " VIM-SURROUND
 " ------------
