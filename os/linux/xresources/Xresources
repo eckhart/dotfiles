@@ -1,25 +1,22 @@
 #include "colors/erosionedit"
 
-urxvt*cursorBlink: true
+URxvt.cursorBlink: true
 URxvt.scrollBar: false
-URxvt.font: *-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
-URxvt.boldFont: *-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
-urxvt*geometry: 100x35
-URxvt*internalBorder: 15
-URxvt*externalBorder: 0
+URxvt.font: *-tewi-medium-r-normal-*-11-*-*-*-*-*-iso10646-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
+URxvt.boldFont: *-tewi-medium-r-normal-*-11-*-*-*-*-*-iso10646-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1
+URxvt.geometry: 100x35
+URxvt.internalBorder: 15
+URxvt.externalBorder: 0
 
 URxvt.keysym.C-7: command:\033]710;*-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1\007\033]711;*-termsynu-medium-r-normal-*-13-*-*-*-*-*-*-1,-misc-stlarch-medium-r-normal--10-100-75-75-c-80-iso10646-1\007
 URxvt.keysym.C-8: command:\033]710;*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-1\007\033]711;*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-1\007
 URxvt.keysym.C-9: command:\033]710;-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1\007\033]711;-lucy-tewi-medium-r-normal--11-90-75-75-p-58-iso10646-1\007
-URxvt.keysym.C-0: command:\033]710;-ypn-envypn-medium-r-normal--15-150-75-75-c-90-iso8859-1\007\033]711;-ypn-envypn-medium-r-normal--15-150-75-75-c-90-iso8859-1\007
 
 URxvt.perl-ext:	  default,matcher
-URxvt.perl-ext-common: clipboard,font-size,vim-scrollback
+URxvt.perl-ext-common: clipboard,font-size
 
 URxvt.keysym.Mod1-c: perl:clipboard:copy
 URxvt.keysym.Mod1-v: perl:clipboard:paste
-
-urxvt*vim-scrollback: M-z
 
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
@@ -30,24 +27,3 @@ Xft.antialias: 1
 Xft.hinting: 1
 Xft.autohint: 0
 Xft.hintstyle: hintslight
-
-xclock*width: 200
-xclock*height: 200
-
-xfontsel*background: #151515
-xfontsel*foreground: #ffffff
-
-xload*update: 1
-xload*borderWidth: 1
-xload*background: #151515
-xload*foreground: #cf6a4c
-xload*padding: 3
-xload*showLabel: false
-
-xman*jumpScroll: true
-xman*multiScroll: true
-xman*scrollBar: 0
-xman*background: #151515
-xman*foreground: #ffffff
-xman*manualFontBoldColor: #cf6a4c
-xman*manualFontItalicColor: #99ad6a
