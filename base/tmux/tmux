@@ -34,7 +34,7 @@ set -g set-titles on
 
 # Looks
 set -g status on
-set -g status-position top
+set -g status-position bottom
 set -g status-fg brightwhite
 set -g status-bg default
 
@@ -53,11 +53,11 @@ set -g status-justify left
 set -g status-left ""
 set -g status-right ""
 
-set -g status-right "#[bg=brightblue]#[fg=#181513]▓░ #H ░▓#[bg=brightblack]#[fg=#181513]█▓░ #S ░▓#[bg=brightblue]#[fg=#181513]█▓░ #{pane_current_path} #(~/bin/git-info)"
+set -g status-right "#[fg=brightwhite]#{pane_current_path} #(~/bin/git-info)"
 set -g status-right-length 100
-setw -g window-status-format "#[bg=white]#[fg=#181513]▓░ #W "
+setw -g window-status-format "#[fg=white]#W "
 setw -g window-status-attr dim
-setw -g window-status-current-format "#[bg=brightblue]#[fg=#181513]▓░ #W "
+setw -g window-status-current-format "#[fg=brightwhite]+ #W "
 setw -g window-status-content-attr blink
 setw -g window-status-current-attr dim
 
