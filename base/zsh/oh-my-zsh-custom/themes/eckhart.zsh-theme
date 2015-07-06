@@ -7,7 +7,7 @@ ranger_prompt_info(){
 }
 
 prompt_setup_eckhart(){
-  base_prompt="%{$fg[brightwhite]%}$%{$reset_color%} "
+  base_prompt="%{$fg[brightwhite]%}%%%{$reset_color%} "
 
   base_prompt_nocolor=$(echo "$base_prompt" | perl -pe "s/%\{[^}]+\}//g")
 
