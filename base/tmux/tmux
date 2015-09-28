@@ -56,10 +56,7 @@ set -g status-right ""
 set -g status-right "#[fg=brightwhite]#{pane_current_path} #(~/bin/git-info)"
 set -g status-right-length 100
 setw -g window-status-format "#[fg=white]#W "
-setw -g window-status-attr dim
 setw -g window-status-current-format "#[fg=brightwhite]+ #W "
-setw -g window-status-content-attr blink
-setw -g window-status-current-attr dim
 
 set -g status-interval 1
 
@@ -86,6 +83,7 @@ bind-key C split-window -h -c "#{pane_current_path}"
 bind-key r source ~/.tmux.conf \; display "Reloaded!"
 bind-key X kill-session
 bind-key m command-prompt "split-window 'exec man %%'"
+bind-key u run $HOME/bin/tmux-url-select
 bind-key i set-option status
 
 # Copy mode
