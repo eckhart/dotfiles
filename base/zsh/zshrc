@@ -35,11 +35,9 @@ ZSH_CUSTOM=$XDG_CONFIG_HOME/zsh/oh-my-zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
-plugins=(zsh-syntax-highlighting ssh-agent git vagrant docker fabric)
+plugins=(zsh-syntax-highlighting git vagrant docker fabric)
 
 source $ZSH/oh-my-zsh.sh
-
-zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 # Base config
 
