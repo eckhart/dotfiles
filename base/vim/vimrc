@@ -12,6 +12,9 @@ set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM/vimfiles,$V
 let mapleader = "\<Space>"
 set hidden  " abandon buffer when unloaded
 
+" Force old regex engine
+set re=1
+
 " NAVIGATION
 " ----------
 
@@ -86,8 +89,10 @@ nmap <c-f> [s1z=<c-o>
 
 set number
 set numberwidth=4
-set ruler
 set linebreak   " will wrap long lines at a character in 'breakat'
+
+" custom statusline
+set statusline=%f\ %=\ %h%m%r%k\ %y\ %{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}\ %-8.(%l,%c%V%)\ %P\ %L
 
 " hightlight cursorline with <leader>,
 nnoremap <Leader>, :set cursorline!<CR>
@@ -103,8 +108,8 @@ endif
 
 set background=dark
 
-hi Comment      ctermfg=8
-hi StatusLine ctermfg=none ctermbg=0 cterm=none
+hi Comment ctermfg=8
+hi StatusLine ctermfg=none ctermbg=7 cterm=none
 hi StatusLineNC ctermfg=none ctermbg=0 cterm=none
 hi Visual term=reverse cterm=reverse ctermbg=0
 
@@ -131,6 +136,13 @@ hi SyntasticStyleErrorLine ctermfg=none ctermbg=none
 hi SyntasticStyleWarningLine ctermfg=none ctermbg=none
 hi SpellBad ctermfg=0 ctermbg=3
 hi SpellCap ctermfg=0 ctermbg=1
+
+" Make diffs readable
+
+hi DiffAdd ctermfg=15 ctermbg=0
+hi DiffDelete ctermfg=15 ctermbg=0
+hi DiffChange ctermfg=15 ctermbg=0
+hi DiffText term=reverse ctermbg=0 cterm=reverse
 
 " prettier vertical split
 hi VertSplit    ctermfg=0 ctermbg=None cterm=None
@@ -159,6 +171,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'tomtom/tlib_vim'
 Bundle 'marcweber/vim-addon-mw-utils'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'jtratner/vim-flavored-markdown'
 Bundle 'terryma/vim-multiple-cursors'
@@ -167,6 +180,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'honza/vim-snippets'
 Bundle 'tpope/vim-surround'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'jamessan/vim-gnupg'
 
 filetype plugin indent on
 
@@ -180,6 +194,9 @@ autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 " markdown
 autocmd FileType ghmarkdown NeoCompleteLock|setlocal textwidth=80
 autocmd BufRead,BufNewFile *.md,*.markdown set filetype=ghmarkdown
+
+" GPG
+autocmd User GnuPG let b:GPGOptions += ["sign"]
 
 " BUNDLES SPECIFIC CONFIG
 " -----------------------
