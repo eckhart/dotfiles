@@ -55,8 +55,8 @@ set -g status-left ""
 set -g status-right ""
 set -g status-justify centre
 
-setw -g window-status-format "#[fg=white]#I. #W "
-setw -g window-status-current-format "#[fg=brightwhite]#I. #W "
+setw -g window-status-format "#[fg=brightblack]#I. #W#F "
+setw -g window-status-current-format "#[fg=brightwhite]#I. #W#F "
 
 set -g status-interval 1
 
